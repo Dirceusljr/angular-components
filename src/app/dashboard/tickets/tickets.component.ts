@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NewTicketComponent } from './new-ticket/new-ticket.component';
 import { NewTicket } from './new-ticket/new-ticket.model';
 import { Ticket } from './ticket/ticket.model';
-import { TicketComponent } from "./ticket/ticket.component";
+import { TicketComponent } from './ticket/ticket.component';
 
 @Component({
   selector: 'app-tickets',
@@ -23,5 +23,17 @@ export class TicketsComponent {
     };
 
     this.tickets.push(ticket);
+  }
+
+  onCloseTicket(id: string) {
+    this.tickets = this.tickets.map((ticket) => {
+      if (ticket.id === id) {
+        return {
+          ...ticket,
+          status: 'closed',
+        };
+      }
+      return ticket;
+    });
   }
 }
