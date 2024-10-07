@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ButtonComponent } from '../../../shared/button/button.component';
-import { ControlComponent } from "../../../shared/control/control.component";
+import { ControlComponent } from '../../../shared/control/control.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,11 +9,12 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [ButtonComponent, ControlComponent, FormsModule],
   templateUrl: './new-ticket.component.html',
-  styleUrl: './new-ticket.component.css'
+  styleUrl: './new-ticket.component.css',
 })
 export class NewTicketComponent {
-onSubmit(title: string, ticketText: string) {
-  console.log(title)
-  console.log(ticketText)
-}
+  onSubmit(title: string, ticketText: string, form: HTMLFormElement) {
+    console.log(title);
+    console.log(ticketText);
+    form.reset();
+  }
 }
